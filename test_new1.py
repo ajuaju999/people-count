@@ -50,7 +50,8 @@ while(1):
     fgmask = fgbg.apply(fgmask)
     fgmask = cv2.medianBlur(fgmask, 7)
     oldFgmask = fgmask.copy()
-    image, contours, hierarchy = cv2.findContours(fgmask, cv2.RETR_EXTERNAL,1)
+  #  image, contours, hierarchy = cv2.findContours(fgmask, cv2.RETR_EXTERNAL,1)
+    contours, hierarchy = cv2.findContours(fgmask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     for contour in contours:
         if  2000 <= cv2.contourArea(contour) <= 200000:
             #QttyOfContours = QttyOfContours+1   
